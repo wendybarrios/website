@@ -1,3 +1,5 @@
+//Import Modules
+const getTimeline = require('../utils/get-timeline');
 var fs = require("fs")
 
 // Global variables
@@ -30,39 +32,43 @@ async function main({ g, c }, { shouldPost, issueNum }){
   }
 }
 
-/**
- * Function that returns the timeline of an issue.
- * @param {Number} issueNum the issue's number 
- * @returns an Array of Objects containing the issue's timeline of events
- */
+// Beginning of Code to be removed
+// /**
+//  * Function that returns the timeline of an issue.
+//  * @param {Number} issueNum the issue's number 
+//  * @returns an Array of Objects containing the issue's timeline of events
+//  */
 
- async function getTimeline(issueNum){
-	let history = []
-	let page = 1
-  while (true) {
-    try {
-      const results = await github.issues.listEventsForTimeline({
-        owner: context.repo.owner,
-        repo: context.repo.repo,
-        issue_number: issueNum,
-        per_page: 100,
-        page: page,
-      });
-      if (results.data.length){
-	      history = history.concat(results.data);
-      } else {
-        break
-      }
-    } catch (err){
-      console.log(error);
-			continue
-    }
-    finally{
-      page++
-    }
-  }
-	return history
-}
+//  async function getTimeline(issueNum){
+// 	let history = []
+// 	let page = 1
+//   while (true) {
+//     try {
+//       const results = await github.issues.listEventsForTimeline({
+//         owner: context.repo.owner,
+//         repo: context.repo.repo,
+//         issue_number: issueNum,
+//         per_page: 100,
+//         page: page,
+//       });
+//       if (results.data.length){
+// 	      history = history.concat(results.data);
+//       } else {
+//         break
+//       }
+//     } catch (err){
+//       console.log(error);
+// 			continue
+//     }
+//     finally{
+//       page++
+//     }
+//   }
+// 	return history
+// }
+// ending of code to be removed
+
+getTimeline(issueNum)
 
 /**
  * @description - This function makes the comment with the issue assignee's github handle using the raw preliminary.md file

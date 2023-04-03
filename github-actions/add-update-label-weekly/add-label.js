@@ -1,5 +1,6 @@
 // Import modules
 const findLinkedIssue = require('../utils/find-linked-issue');
+const getTimeline = require('../utils/get-timeline');
 var fs = require("fs");
 // Global variables
 var github;
@@ -96,39 +97,45 @@ async function* getIssueNumsFromColumn(columnId) {
     }
   }
 }
-/**
- * Function that returns the timeline of an issue.
- * @param {Number} issueNum the issue's number 
- * @returns an Array of Objects containing the issue's timeline of events
- */
 
-async function getTimeline(issueNum) {
-  let arra = []
-  let page = 1
-  while (true) {
-    try {
-      const results = await github.issues.listEventsForTimeline({
-        owner: context.repo.owner,
-        repo: context.repo.repo,
-        issue_number: issueNum,
-        per_page: 100,
-        page: page,
-      });
-      if (results.data.length) {
-        arra = arra.concat(results.data);
-      } else {
-        break
-      }
-    } catch (err) {
-      console.log(error);
-      continue
-    }
-    finally {
-      page++
-    }
-  }
-  return arra
-}
+// Beginning of Code to remove
+// /**
+//  * Function that returns the timeline of an issue.
+//  * @param {Number} issueNum the issue's number 
+//  * @returns an Array of Objects containing the issue's timeline of events
+//  */
+
+// async function getTimeline(issueNum) {
+//   let arra = []
+//   let page = 1
+//   while (true) {
+//     try {
+//       const results = await github.issues.listEventsForTimeline({
+//         owner: context.repo.owner,
+//         repo: context.repo.repo,
+//         issue_number: issueNum,
+//         per_page: 100,
+//         page: page,
+//       });
+//       if (results.data.length) {
+//         arra = arra.concat(results.data);
+//       } else {
+//         break
+//       }
+//     } catch (err) {
+//       console.log(error);
+//       continue
+//     }
+//     finally {
+//       page++
+//     }
+//   }
+//   return arra
+// }
+// Ending of Code to Remove
+
+getTimeline(issueNum)
+
 
 /**
  * Assesses whether the timeline is outdated.
