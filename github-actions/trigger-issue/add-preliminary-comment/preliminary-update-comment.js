@@ -32,7 +32,7 @@ async function main({ g, c }, { shouldPost, issueNum }){
   }
 }
 
-// Beginning of Code to be removed
+// Beginning of Code to Replace
 // /**
 //  * Function that returns the timeline of an issue.
 //  * @param {Number} issueNum the issue's number 
@@ -66,9 +66,10 @@ async function main({ g, c }, { shouldPost, issueNum }){
 //   }
 // 	return history
 // }
-// ending of code to be removed
+// Ending of code to Repace
 
-getTimeline(issueNum)
+// Mine
+return getTimeline(issueNum)
 
 /**
  * @description - This function makes the comment with the issue assignee's github handle using the raw preliminary.md file

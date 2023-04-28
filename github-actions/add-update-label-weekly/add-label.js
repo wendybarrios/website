@@ -1,6 +1,8 @@
 // Import modules
+const { getTimeline } = require('../utils/get-timeline.js')
 const findLinkedIssue = require('../utils/find-linked-issue');
-const getTimeline = require('../utils/get-timeline');
+// const getTimeline = require("../utils/get-timeline");
+
 var fs = require("fs");
 // Global variables
 var github;
@@ -30,6 +32,7 @@ fourteenDayCutoffTime.setDate(fourteenDayCutoffTime.getDate() - inactiveUpdatedB
 async function main({ g, c }, columnId) {
   github = g;
   context = c;
+
   // Retrieve all issue numbers from a column
   const issueNums = getIssueNumsFromColumn(columnId);
   for await (let issueNum of issueNums) {
@@ -98,12 +101,12 @@ async function* getIssueNumsFromColumn(columnId) {
   }
 }
 
-// Beginning of Code to remove
-// /**
-//  * Function that returns the timeline of an issue.
-//  * @param {Number} issueNum the issue's number 
-//  * @returns an Array of Objects containing the issue's timeline of events
-//  */
+// Beginning of Code to Replace
+/**
+ * Function that returns the timeline of an issue.
+ * @param {Number} issueNum the issue's number 
+ * @returns an Array of Objects containing the issue's timeline of events
+ */
 
 // async function getTimeline(issueNum) {
 //   let arra = []
@@ -132,9 +135,11 @@ async function* getIssueNumsFromColumn(columnId) {
 //   }
 //   return arra
 // }
-// Ending of Code to Remove
+// Ending of Code to Replace
 
-getTimeline(issueNum)
+// Mine
+// let test = await getTimeline(1)
+// console.log(test)
 
 
 /**
