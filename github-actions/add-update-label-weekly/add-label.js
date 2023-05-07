@@ -1,7 +1,7 @@
 // Import modules
-const { getTimeline } = require('../utils/get-timeline.js')
+const getTimeline = require('../utils/get-timeline.js')
 const findLinkedIssue = require('../utils/find-linked-issue');
-// const getTimeline = require("../utils/get-timeline");
+
 
 var fs = require("fs");
 // Global variables
